@@ -20,13 +20,15 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var categories: [[String: String]]!
     var sortMethods = ["Best Match", "Distance", "Highest Rated"]
+    var sortModes = [YelpSortMode.bestMatched, YelpSortMode.distance, YelpSortMode.highestRated]
     var distances = ["Automatic", "3 miles", "5 miles", "10 miles", "20 miles"]
-    var distanceValues = 
+    var distanceValues = [0, 3*1609, 5*1609, 10*1609, 20*1609]
     var switchStates = [Int: Bool]()
     var sectionNames = ["Deals", "Distance", "Sort", "Category"]
     var dealsOn = false
     var sortMode: Int = -1
-    var distanceOption: Int = -1
+    var distanceIndex: Int = -1
+    var distance: Int = -1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +36,6 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         categories = yelpCategories()
         tableView.delegate = self
         tableView.dataSource = self
-        //tableView.register(SortCell.self, forCellReuseIdentifier: "SortCell")
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "TableViewHeaderView")
     }
 
@@ -42,6 +43,11 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    /*
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }*/
     
     @IBAction func onCancel(_ sender: AnyObject) {
         dismiss(animated: true, completion: nil)
@@ -64,7 +70,11 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         filters["deals"] = dealsOn as AnyObject?
 
         if sortMode > -1 {
-            filters["sort"] = sortMode as AnyObject?
+            filters["sort"] = sortModes[sortMode] as AnyObject?
+        }
+
+        if distance > 0 {
+            filters["radius_filter"] = distance as AnyObject?
         }
 
         delegate?.filtersViewController!(filtersViewController: self, didUpdateFilters: filters)
@@ -76,14 +86,6 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
-
-    /*
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableViewHeaderView")! as UITableViewHeaderFooterView
-        header.textLabel?.text = sectionNames[section]
-        return header
-    }
-     */
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionNames[section]
@@ -116,7 +118,12 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DistanceCell")! as! DistanceCell
             cell.distanceLabel.text = distances[indexPath.row]
-
+            if indexPath.row == distanceIndex {
+                cell.checkmarkView.isHidden = false
+            }
+            else {
+                cell.checkmarkView.isHidden = true
+            }
             return cell
         }
         else if indexPath.section == 2 {
@@ -160,7 +167,10 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
             clearDistanceCells(row: 3, section: 1)
             let cell = tableView.cellForRow(at: indexPath) as! DistanceCell
             cell.checkmarkView.isHidden = false
-
+            distanceIndex = indexPath.row
+            distance = distanceValues[indexPath.row]
+            tableView.reloadSections(IndexSet([1]), with: UITableViewRowAnimation.none)
+            print("the distance option is \(distance)")
         }
         // Sort mode
         else if indexPath.section == 2 {

@@ -80,7 +80,10 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         
         var categories = filters["categories"] as? [String]
 
-        Business.searchWithTerm(term: "Restaurant", sort: nil, categories: categories, deals: nil, completion: {
+        var deals = filters["deals"] as? Bool
+        var sortMode = filters["sort"] as? YelpSortMode
+
+        Business.searchWithTerm(term: "Restaurant", sort: sortMode, categories: categories, deals: deals, completion: {
             (businesses: [Business]?, error: Error?) -> Void in
             self.businesses = businesses
             self.tableView.reloadData()

@@ -1,34 +1,37 @@
-### Basic Yelp client
+# Assignment 2 - Yelp
 
-This is a headless example of how to implement an OAuth 1.0a Yelp API client. The Yelp API provides an application token that allows applications to make unauthenticated requests to their search API.
+A Yelp search app.
 
-### Next steps
+Time spent: 12 hours spent in total
 
-- Check out `BusinessesViewController.swift` to see how to use the `Business` model.
+## User Stories
 
-### Sample request
+The following **required** functionality is completed:
 
-**Basic search with query**
+### Search Results Page
 
-```
-Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
-    self.businesses = businesses
-    
-    for business in businesses {
-        print(business.name!)
-        print(business.address!)
-    }
-})
-```
+- [x] Table rows should be dynamic height according to the content height.
+- [x] Custom cells should have the proper Auto Layout constraints.
+- [x] Search bar should be in the navigation bar (doesn't have to expand to show location like the real Yelp app does).
 
-**Advanced search with categories, sort, and deal filters**
+### Filter Page
 
-```
-Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
+- [x] The filters you should actually have are: category, sort (best match, distance, highest rated), distance, deals (on/off).
+- [x] The filters table should be organized into sections as in the mock.
+- [x] Clicking on the "Search" button should dismiss the filters page and trigger the search w/ the new filter settings.
+- [ ] Distance filter should expand as in the real Yelp app.
+- [ ] Categories should show a subset of the full list with a "See All" row to expand.
 
-    for business in businesses {
-        print(business.name!)
-        print(business.address!)
-    }
-}
-```
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='http://i.imgur.com/JpuxX2k.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
+## Notes
+
+Describe any challenges encountered while building the app.
+
+
