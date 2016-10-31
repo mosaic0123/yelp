@@ -27,11 +27,7 @@ The following **required** functionality is completed:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/agU9XrM.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-Search Bar:
-
-<img src='http://i.imgur.com/sx3H2bE.gif' title='Search Bar' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/FRhCPX7.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 

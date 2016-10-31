@@ -105,6 +105,7 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         Business.searchWithTerm(term: "Restaurant", sort: sortMode, categories: categories, deals: deals, completion: {
             (businesses: [Business]?, error: Error?) -> Void in
             self.businesses = businesses
+            self.filteredData = businesses
             self.tableView.reloadData()
         })
 
