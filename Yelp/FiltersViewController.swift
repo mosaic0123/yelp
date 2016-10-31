@@ -29,6 +29,8 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     var sortMode: Int = -1
     var distanceIndex: Int = -1
     var distance: Int = -1
+    var sortHasExpanded = false
+    var distanceHasExpanded = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,22 +120,33 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DistanceCell")! as! DistanceCell
             cell.distanceLabel.text = distances[indexPath.row]
+            cell.checkmarkView.image = UIImage(named: "checkmark")
             if indexPath.row == distanceIndex {
                 cell.checkmarkView.isHidden = false
             }
             else {
                 cell.checkmarkView.isHidden = true
             }
+            if indexPath.row == 0 && !distanceHasExpanded {
+                cell.checkmarkView.image = UIImage(named: "triangle")
+                cell.checkmarkView.isHidden = false
+            }
             return cell
         }
         else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SortCell")! as! SortCell
             cell.sortLabel.text = sortMethods[indexPath.row]
+            cell.checkView.image = UIImage(named: "checkmark")
             if indexPath.row == sortMode {
                 cell.checkView.isHidden = false
             }
             else {
                 cell.checkView.isHidden = true
+            }
+            if indexPath.row == 0 && !sortHasExpanded {
+                cell.checkView.image = UIImage(named: "triangle")
+                cell.checkView.isHidden = false
+
             }
             return cell
         }
@@ -164,22 +177,40 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Distance mode 
         if indexPath.section == 1 {
-            clearDistanceCells(row: 3, section: 1)
-            let cell = tableView.cellForRow(at: indexPath) as! DistanceCell
-            cell.checkmarkView.isHidden = false
-            distanceIndex = indexPath.row
-            distance = distanceValues[indexPath.row]
-            tableView.reloadSections(IndexSet([1]), with: UITableViewRowAnimation.none)
-            print("the distance option is \(distance)")
+            if distanceHasExpanded {
+                clearDistanceCells(row: 3, section: 1)
+                let cell = tableView.cellForRow(at: indexPath) as! DistanceCell
+                cell.checkmarkView.isHidden = false
+                distanceIndex = indexPath.row
+                distance = distanceValues[indexPath.row]
+                tableView.reloadSections(IndexSet([1]), with: UITableViewRowAnimation.none)
+                print("the distance option is \(distance)")
+            }
+            else {
+                distanceHasExpanded = true
+                let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as! DistanceCell
+                cell.checkmarkView.image = UIImage(named: "checkmark")
+                cell.checkmarkView.isHidden = true
+                tableView.reloadSections(IndexSet([1]), with: UITableViewRowAnimation.none)
+            }
         }
         // Sort mode
         else if indexPath.section == 2 {
+            if sortHasExpanded {
             // Only one cell can be selected, clear the other cells
-            clearSortCells(row: 2, section: 2)
-            let cell = tableView.cellForRow(at: indexPath) as! SortCell
-            cell.checkView.isHidden = false
-            sortMode = indexPath.row
-        tableView.reloadSections(IndexSet([2]), with: UITableViewRowAnimation.none)
+                clearSortCells(row: 2, section: 2)
+                let cell = tableView.cellForRow(at: indexPath) as! SortCell
+                cell.checkView.isHidden = false
+                sortMode = indexPath.row
+            tableView.reloadSections(IndexSet([2]), with: UITableViewRowAnimation.none)
+            }
+            else {
+                sortHasExpanded = true
+                let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as! SortCell
+                cell.checkView.image = UIImage(named: "checkmark")
+                cell.checkView.isHidden = true
+                tableView.reloadSections(IndexSet([2]), with: UITableViewRowAnimation.none)
+            }
         }
         print(sortMode)
     }
@@ -195,6 +226,38 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         for i in 0...row {
             let cell = tableView.cellForRow(at: IndexPath(row: row, section: section)) as! SortCell
             cell.checkView.isHidden = true
+        }
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                return 68.0
+            }
+            else {
+                if distanceHasExpanded {
+                    return 68.0
+                }
+                else {
+                    return 0
+                }
+            }
+        }
+        else if indexPath.section == 2 {
+            if indexPath.row == 0 {
+                return 68.0
+            }
+            else {
+                if sortHasExpanded {
+                    return 68.0
+                }
+                else {
+                    return 0
+                }
+            }
+        }
+        else {
+            return 68.0
         }
     }
 
