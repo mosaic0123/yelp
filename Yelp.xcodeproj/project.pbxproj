@@ -23,6 +23,8 @@
 		AF3E5AE81DC6555300311C5A /* SortCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3E5AE71DC6555300311C5A /* SortCell.swift */; };
 		AF3E5AEA1DC65EF700311C5A /* DealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3E5AE91DC65EF700311C5A /* DealCell.swift */; };
 		AF3E5AEC1DC65F0900311C5A /* DistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3E5AEB1DC65F0900311C5A /* DistanceCell.swift */; };
+		AF3E5AEE1DC6D93A00311C5A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF3E5AED1DC6D93A00311C5A /* MapKit.framework */; };
+		AF3E5AF01DC6DAEA00311C5A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3E5AEF1DC6DAEA00311C5A /* MapViewController.swift */; };
 		AFE69CFB1DC46577005AD24C /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE69CFA1DC46577005AD24C /* extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,8 @@
 		AF3E5AE71DC6555300311C5A /* SortCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortCell.swift; sourceTree = "<group>"; };
 		AF3E5AE91DC65EF700311C5A /* DealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealCell.swift; sourceTree = "<group>"; };
 		AF3E5AEB1DC65F0900311C5A /* DistanceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceCell.swift; sourceTree = "<group>"; };
+		AF3E5AED1DC6D93A00311C5A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		AF3E5AEF1DC6DAEA00311C5A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		AFE69CFA1DC46577005AD24C /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		C79C0AC126EDAA235847CEA2 /* Pods_Yelp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yelp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF53DC2D7A8303A68532E7C6 /* Pods-Yelp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yelp/Pods-Yelp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF3E5AEE1DC6D93A00311C5A /* MapKit.framework in Frameworks */,
 				31D95BCBCA38716181E686D3 /* Pods_Yelp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,6 +173,7 @@
 			children = (
 				22AAAA9B1AEA1EC300A544AF /* BusinessesViewController.swift */,
 				AF37A8291DC111F200936FF5 /* FiltersViewController.swift */,
+				AF3E5AEF1DC6DAEA00311C5A /* MapViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -175,6 +181,7 @@
 		4A7CA25ACD374CA0AC966A24 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AF3E5AED1DC6D93A00311C5A /* MapKit.framework */,
 				AA3C5CF4FD317D72ABE2AAC4 /* Pods.framework */,
 				C79C0AC126EDAA235847CEA2 /* Pods_Yelp.framework */,
 				0A1000F3975EB43318C1D4FA /* Pods_YelpTests.framework */,
@@ -263,6 +270,11 @@
 					222D8A5419CCF9F900D2DB53 = {
 						CreatedOnToolsVersion = 6.0;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					222D8A6919CCF9F900D2DB53 = {
 						CreatedOnToolsVersion = 6.0;
@@ -415,6 +427,7 @@
 				AFE69CFB1DC46577005AD24C /* extensions.swift in Sources */,
 				AF3E5AE81DC6555300311C5A /* SortCell.swift in Sources */,
 				22AAAA991AEA0A9700A544AF /* Business.swift in Sources */,
+				AF3E5AF01DC6DAEA00311C5A /* MapViewController.swift in Sources */,
 				222D8A7D19CCFAE000D2DB53 /* YelpClient.swift in Sources */,
 				222D8A5B19CCF9F900D2DB53 /* AppDelegate.swift in Sources */,
 				AF3E5AEC1DC65F0900311C5A /* DistanceCell.swift in Sources */,

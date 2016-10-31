@@ -92,8 +92,15 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let navigationController = segue.destination as! UINavigationController
-        let filtersViewController = navigationController.topViewController as! FiltersViewController
-        filtersViewController.delegate = self
+        if segue.identifier == "showFilter" {
+            let navigationController = segue.destination as! UINavigationController
+            let filtersViewController = navigationController.topViewController as! FiltersViewController
+            filtersViewController.delegate = self
+        }
+        else if segue.identifier == "showMap" {
+            let navigationController = segue.destination as! UINavigationController
+            let mapViewController = navigationController.topViewController as! MapViewController
+            mapViewController.mapBusinesses = businesses
+        }
     }
 }

@@ -7,6 +7,40 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Map View Controller-->
+        <scene sceneID="fRW-ch-MD6">
+            <objects>
+                <viewController id="K2e-Xb-KIA" customClass="MapViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FdJ-0w-Klz"/>
+                        <viewControllerLayoutGuide type="bottom" id="vIb-9W-3db"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b7g-to-iaB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OoC-tB-MmY">
+                                <frame key="frameInset" minY="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6fr-yA-cXi">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="4ul-Nd-OFn">
+                            <connections>
+                                <action selector="cancelButton:" destination="K2e-Xb-KIA" id="fGa-Ib-Q28"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="foodMap" destination="OoC-tB-MmY" id="TJT-tE-5Jw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U9z-tA-JH2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3695.1999999999998" y="-303.59820089955025"/>
+        </scene>
         <!--Yelp-->
         <scene sceneID="5L9-Uz-lNK">
             <objects>
@@ -119,7 +153,12 @@
                     <navigationItem key="navigationItem" title="Yelp" id="73w-jj-cmt">
                         <barButtonItem key="leftBarButtonItem" title="Filters" id="QCX-GL-Tmm">
                             <connections>
-                                <segue destination="GwB-4s-STn" kind="presentation" id="RbO-iz-qfx"/>
+                                <segue destination="GwB-4s-STn" kind="presentation" identifier="showFilter" id="RbO-iz-qfx"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="map" id="eWO-Lx-Wfx">
+                            <connections>
+                                <segue destination="fte-ZC-C0t" kind="presentation" identifier="showMap" id="x83-YT-YkO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -309,8 +348,27 @@
             </objects>
             <point key="canvasLocation" x="3752.8000000000002" y="353.9730134932534"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xCc-0f-lHg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fte-ZC-C0t" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7x4-l9-sVw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="K2e-Xb-KIA" kind="relationship" relationship="rootViewController" id="uGG-ne-O8e"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="86O-R7-bof" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2756" y="-303.59820089955025"/>
+        </scene>
     </scenes>
     <resources>
         <image name="checkmark" width="24" height="24"/>
+        <image name="map" width="32" height="32"/>
     </resources>
 </document>
