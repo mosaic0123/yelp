@@ -25,6 +25,7 @@
 		AF3E5AEC1DC65F0900311C5A /* DistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3E5AEB1DC65F0900311C5A /* DistanceCell.swift */; };
 		AF3E5AEE1DC6D93A00311C5A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF3E5AED1DC6D93A00311C5A /* MapKit.framework */; };
 		AF3E5AF01DC6DAEA00311C5A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3E5AEF1DC6DAEA00311C5A /* MapViewController.swift */; };
+		AF6FED551DC6EAC600C35473 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6FED541DC6EAC600C35473 /* DetailViewController.swift */; };
 		AFE69CFB1DC46577005AD24C /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE69CFA1DC46577005AD24C /* extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		AF3E5AEB1DC65F0900311C5A /* DistanceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceCell.swift; sourceTree = "<group>"; };
 		AF3E5AED1DC6D93A00311C5A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		AF3E5AEF1DC6DAEA00311C5A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		AF6FED541DC6EAC600C35473 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AFE69CFA1DC46577005AD24C /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		C79C0AC126EDAA235847CEA2 /* Pods_Yelp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yelp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF53DC2D7A8303A68532E7C6 /* Pods-Yelp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yelp/Pods-Yelp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				22AAAA9B1AEA1EC300A544AF /* BusinessesViewController.swift */,
 				AF37A8291DC111F200936FF5 /* FiltersViewController.swift */,
 				AF3E5AEF1DC6DAEA00311C5A /* MapViewController.swift */,
+				AF6FED541DC6EAC600C35473 /* DetailViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF6FED551DC6EAC600C35473 /* DetailViewController.swift in Sources */,
 				AF37A8261DC0484000936FF5 /* BusinessCell.swift in Sources */,
 				22AAAA9C1AEA1EC300A544AF /* BusinessesViewController.swift in Sources */,
 				AF37A82A1DC111F200936FF5 /* FiltersViewController.swift in Sources */,

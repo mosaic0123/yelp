@@ -31,6 +31,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     var distance: Int = -1
     var sortHasExpanded = false
     var distanceHasExpanded = false
+    var categoriesHasExpanded = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -157,6 +158,8 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
             cell.delegate = self
             
             cell.onSwitch.isOn = switchStates[indexPath.row] ?? false
+
+
             return cell
         }
     }
@@ -212,7 +215,6 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
                 tableView.reloadSections(IndexSet([2]), with: UITableViewRowAnimation.none)
             }
         }
-        print(sortMode)
     }
 
     func clearDistanceCells(row: Int, section: Int) {
@@ -230,32 +232,15 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 1 {
-            if indexPath.row == 0 {
-                return 68.0
-            }
-            else {
-                if distanceHasExpanded {
-                    return 68.0
-                }
-                else {
-                    return 0
-                }
-            }
+        if indexPath.section == 1 && !distanceHasExpanded && indexPath.row > 0 {
+            return 0
         }
-        else if indexPath.section == 2 {
-            if indexPath.row == 0 {
-                return 68.0
-            }
-            else {
-                if sortHasExpanded {
-                    return 68.0
-                }
-                else {
-                    return 0
-                }
-            }
+        else if indexPath.section == 2 && !sortHasExpanded && indexPath.row > 0{
+            return 0
         }
+        /* else if indexPath.section == 3 && !categoriesHasExpanded && indexPath.row > 2 {
+            return 0
+        } */
         else {
             return 68.0
         }
